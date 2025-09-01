@@ -2,14 +2,13 @@ import { z } from "zod";
 
 // register schemma
 export const registerSchema = z.object({
-  fullName: z.string().min(2, { message: "Enter your Fullname" }).trim(),
-  email: z.string().email({ message: "Enter a valid email" }).trim(),
+  firstName: z.string().min(2, { message: "Enter your firstname" }).trim(),
+  lastName: z.string().min(2, { message: "Enter your lastname" }).trim(),
+  email: z.string().includes("@", { message: "Enter a valid email" }).trim(),
   password: z
     .string()
     .min(8, { message: "Enter at least 8 characters" })
     .trim(),
-  agreement: z.boolean().refine((val) => val === true),
-  phoneNumber: z.number().min(11, { message: "Enter phone Number" }).optional(),
 });
 
 // login schemma
