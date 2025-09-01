@@ -12,17 +12,17 @@ import { CHECKOUTHELPERS } from "../../helpers/checkout.helpers";
 import { Minus, PencilRuler, Plus, Trash2, X } from "lucide-react";
 import { MarketplaceImages } from "../../constants/image";
 
-const checkout = () => {
+export default function Checkout() {
   return (
     <React.Fragment>
       <Header />
-      <CheckoutContets />
+      <CheckoutContents />
       <Footer />
     </React.Fragment>
   );
-};
+}
 
-export function CheckoutContets() {
+function CheckoutContents() {
   // const [quantity, setQuantity] = useState(0);
 
   // TODO: update quantity lists and also update quantity state based on what the state management is sending.
@@ -51,7 +51,7 @@ export function CheckoutContets() {
               </div>
             ) : (
               <>
-                <CheckourDetails />
+                <CheckoutDetails />
                 <div className="update_button  flex items-center justify-between gap-3 mt-8 mx-5">
                   <Button className="cursor-pointer rounded-none w-1/4 bg-pink-600">
                     {" "}
@@ -75,7 +75,7 @@ export function CheckoutContets() {
   );
 }
 
-export function CheckourDetails() {
+function CheckoutDetails() {
   return (
     <div className="max-h-[70vh] overflow-auto scroll-smooth">
       <Table className="">
@@ -134,7 +134,7 @@ export function CheckourDetails() {
   );
 }
 
-export function CartCheckoutInfo() {
+function CartCheckoutInfo() {
   return (
     <>
       <div className="cart-totals">
@@ -191,5 +191,3 @@ export function CartCheckoutInfo() {
     </>
   );
 }
-
-export default checkout;
