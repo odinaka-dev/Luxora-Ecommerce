@@ -8,29 +8,29 @@ import chairSix from "../assets/Image/chair6.png";
 import chairSeven from "../assets/Image/chair7.png";
 import chairEight from "../assets/Image/chair8.png";
 import chairNine from "../assets/Image/chair9.png";
+import chairEleven from "../assets/Image/chairEleven.png";
+import CategoryImage from "../assets/Image/categories.png";
+import Clock from "../assets/Image/clock.png";
+import EmptCartIcon from "../assets/Image/cartIcon.svg";
+import ErrorImage from "../assets/Image/error-img.png";
+import FirstMain from "../assets/Image/firstmain.png";
+import gimbal from "../assets/Image/gimbal.png";
 import headset from "../assets/Image/headset.png";
 import headsetTwo from "../assets/Image/headset2.png";
-import gimbal from "../assets/Image/gimbal.png";
-import smartwatch from "../assets/Image/smartwatch.png";
-import techset from "../assets/Image/techset.png";
 import Homepagebanner from "../assets/Image/sofa-promotions.png";
 import Lamp from "../assets/Image/LAMP.png";
-import SemiBanner from "../assets/Image/semi-banner.png";
-import chairEleven from "../assets/Image/chairEleven.png";
-import Clock from "../assets/Image/clock.png";
-import FirstMain from "../assets/Image/firstmain.png";
-import CategoryImage from "../assets/Image/categories.png";
-import ErrorImage from "../assets/Image/error-img.png";
 import LoginImage from "../assets/Image/login.jpg";
 import LogsImage from "../assets/Image/logs.png";
 import Marketplace from "../assets/Image/marketplace.jpg";
-import EmptCartIcon from "../assets/Image/cartIcon.svg";
+import MasterCard from "../assets/Image/mastercard-svgrepo-com.png";
+import Paystack from "../assets/Image/Paystack.webp";
+import smartwatch from "../assets/Image/smartwatch.png";
+import SemiBanner from "../assets/Image/semi-banner.png";
+import Stripe from "../assets/Image/stripe-svgrepo-com.png";
+import techset from "../assets/Image/techset.png";
+import Verve from "../assets/Image/verve-svgrepo-com.png";
 
 // payment icons
-import Paystack from "../assets/Image/Paystack.webp";
-import MasterCard from "../assets/Image/mastercard-svgrepo-com.png";
-import Stripe from "../assets/Image/stripe-svgrepo-com.png";
-import Verve from "../assets/Image/verve-svgrepo-com.png";
 
 interface MarketplaceImages {
   chairMain: typeof chairMain;

@@ -2,15 +2,16 @@ import React, { useState } from "react";
 import { ArrowRight, Blocks, Filter } from "lucide-react";
 import { Heart, List, LoaderCircle, ShoppingCart } from "lucide-react"; // prettier-ignore
 import { Link } from "react-router";
-import Header from "../../Components/containers/Header";
-import Footer from "../../Components/containers/Footer";
-import { MarketplaceImages } from "../../constants/image";
-import { Input } from "../../Components/ui/input";
+
+import { Button } from "../../Components/ui/button";
 import { Card, CardContent } from "../../Components/ui/card";
 import { CardHeader, CardTitle } from "../../Components/ui/card"; // prettier-ignore
-import { Button } from "../../Components/ui/button";
 import CartDialogueBox from "../../Components/containers/FavoriteBox";
+import Footer from "../../Components/containers/Footer";
+import Header from "../../Components/containers/Header";
+import { Input } from "../../Components/ui/input";
 import { SidebarProvider } from "../../Components/ui/sidebar";
+import { MarketplaceImages } from "../../constants/image";
 import { HOMEPLACEMARKETPLACE } from "../../helpers/home.helpers";
 
 // bg styles for the background Image
