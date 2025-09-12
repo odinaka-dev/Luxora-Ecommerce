@@ -1,13 +1,10 @@
+import { Link } from "react-router";
+
 import { ChevronLeft } from "lucide-react";
-import {
-  Card,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-  CardContent,
-} from "../../Components/ui/card";
+import { Card, CardDescription, CardHeader, CardTitle, CardContent, } from "../../Components/ui/card"; // prettier-ignore
 import { HOMEPLACEMARKETPLACE } from "../../helpers/home.helpers";
 import { MarketplaceImages } from "../../constants/image";
+import { Button } from "../ui/button";
 
 const CartBox = ({ openModal, setOpenModal }: any) => {
   const handleClose = () => {
@@ -15,7 +12,7 @@ const CartBox = ({ openModal, setOpenModal }: any) => {
   };
 
   return (
-    <div className="bg-white h-[100%] w-3/3 md:w-3/4  lg:w-1/4">
+    <div className="bg-white h-[100%] w-3/3 md:w-3/4  lg:w-1/4 flex flex-col justify-between items-start">
       <div className="cartdialogue_popup pt-24 p-4">
         <div className="flex gap-4 w-full py-4 border-b-[0.2px] border-b-zinc-300">
           <ChevronLeft onClick={handleClose} className="text-gray-800" />
@@ -43,6 +40,13 @@ const CartBox = ({ openModal, setOpenModal }: any) => {
             </Card>
           ))}
         </div>
+      </div>
+      <div className="w-full m-4 px-6">
+        <Link to={"/checkout"}>
+          <Button className="w-[100%] bg-pink-600 py-3 cursor-pointer">
+            Proceed to checkout
+          </Button>
+        </Link>
       </div>
     </div>
   );
