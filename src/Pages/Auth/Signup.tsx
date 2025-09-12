@@ -1,13 +1,15 @@
 import React from "react";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router";
+// import { useForm } from "react-hook-form";
+
+// import { zodResolver } from "@hookform/resolvers/zod";
+// import * as z from "zod";
 
 import Header from "../../Components/containers/Header";
 import { Input } from "../../Components/ui/input";
 import { Button } from "../../Components/ui/button";
 import { MarketplaceImages } from "../../constants/image";
-// import { useForm } from "react-hook-form";
-import * as z from "zod";
 
 const login = () => {
   return (

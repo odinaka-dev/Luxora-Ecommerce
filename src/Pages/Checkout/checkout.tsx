@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
+import { Dialog } from "radix-ui";
 
-import Footer from "../../Components/containers/Footer";
 import Header from "../../Components/containers/Header";
 import { Card, CardHeader } from "../../Components/ui/card";
 import { CardFooter, CardContent } from "../../Components/ui/card";
@@ -17,19 +17,16 @@ export default function Checkout() {
     <React.Fragment>
       <Header />
       <CheckoutContents />
-      <Footer />
     </React.Fragment>
   );
 }
 
 function CheckoutContents() {
-  // const [quantity, setQuantity] = useState(0);
+  const [showModal, setShowModal] = useState<boolean>(false);
 
-  // TODO: update quantity lists and also update quantity state based on what the state management is sending.
-
-  // TODO: handleClearCart
-
-  // TODO: handleUpdatecart
+  function handleClose() {
+    setShowModal(!showModal);
+  }
 
   return (
     <div className="">
@@ -53,7 +50,10 @@ function CheckoutContents() {
               <>
                 <CheckoutDetails />
                 <div className="update_button  flex items-center justify-between gap-3 mt-8 mx-5">
-                  <Button className="cursor-pointer rounded-none w-1/4 bg-pink-600">
+                  <Button
+                    className="cursor-pointer rounded-none w-1/4 bg-pink-600"
+                    onClick={handleClose}
+                  >
                     {" "}
                     <PencilRuler />
                     Update cart
@@ -71,14 +71,32 @@ function CheckoutContents() {
           </div>
         </div>
       </section>
+
+      {/* Payment modal */}
+      <Dialog.Root
+        modal={false}
+        defaultOpen={false}
+        open={showModal}
+        onOpenChange={handleClose}
+      >
+        <Dialog.Trigger asChild={false} />
+
+        <Dialog.Portal>
+          <Dialog.Overlay />
+          <Dialog.Content>
+            <Dialog.Title>Luxona Payment Method</Dialog.Title>
+            <Dialog.Description className=""></Dialog.Description>
+          </Dialog.Content>
+        </Dialog.Portal>
+      </Dialog.Root>
     </div>
   );
 }
 
 function CheckoutDetails() {
   return (
-    <div className="max-h-[70vh] overflow-auto scroll-smooth">
-      <Table className="">
+    <div className="">
+      <Table>
         <TableHeader className="border-transparent px-4 hover:bg-none cursor-pointer">
           <TableRow className="">
             <TableHead className="text-start text-pink-600 font-semibold">
@@ -95,41 +113,49 @@ function CheckoutDetails() {
             </TableHead>
           </TableRow>
         </TableHeader>
-        <TableBody>
-          {CHECKOUTHELPERS.map((items, index) => (
-            <TableRow key={index} className="py-4 text-start">
-              <TableCell className="">
-                <div className="flex flex-col md:flex-row gap-4 relative">
-                  <img src={items.productImage} alt="" className="w-24 h-24" />
-                  <X
-                    size={8}
-                    className="bg-black text-white rounded-full h-3 w-3 absolute left-1"
-                  />
-                  <div>
-                    <p>{items.productName}</p>
-                    <p>{items.Price}</p>
-                  </div>
-                </div>
-              </TableCell>
-              <TableCell>
-                <div className="flex gap-1 items-center">
-                  <Button className="bg-transparent text-black p-0 cursor-pointer hover:text-black hover:bg-zinc-300 duration-300">
-                    <Plus />
-                  </Button>
-                  <span>{items.Quantity}</span>
-                  <Button className="bg-transparent text-black p-0 cursor-pointer hover:text-black hover:bg-zinc-300 duration-300">
-                    <Minus />
-                  </Button>
-                </div>
-              </TableCell>
-              <TableCell>${items.Price}</TableCell>
-              <TableCell>
-                ${Number(items.Price) * Number(items.Quantity)}
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
       </Table>
+      <div className="max-h-[70vh] overflow-y-auto scroll-smooth w-[100%]">
+        <Table className="">
+          <TableBody>
+            {CHECKOUTHELPERS.map((items, index) => (
+              <TableRow key={index} className="py-4 text-start">
+                <TableCell className="">
+                  <div className="flex flex-col md:flex-row gap-4 relative">
+                    <img
+                      src={items.productImage}
+                      alt=""
+                      className="w-24 h-24"
+                    />
+                    <X
+                      size={8}
+                      className="bg-black text-white rounded-full h-3 w-3 absolute left-1"
+                    />
+                    <div>
+                      <p>{items.productName}</p>
+                      <p>{items.Price}</p>
+                    </div>
+                  </div>
+                </TableCell>
+                <TableCell>
+                  <div className="flex gap-1 items-center">
+                    <Button className="bg-transparent text-black p-0 cursor-pointer hover:text-black hover:bg-zinc-300 duration-300">
+                      <Plus />
+                    </Button>
+                    <span>{items.Quantity}</span>
+                    <Button className="bg-transparent text-black p-0 cursor-pointer hover:text-black hover:bg-zinc-300 duration-300">
+                      <Minus />
+                    </Button>
+                  </div>
+                </TableCell>
+                <TableCell>${items.Price}</TableCell>
+                <TableCell>
+                  ${Number(items.Price) * Number(items.Quantity)}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </div>
     </div>
   );
 }
