@@ -1,9 +1,8 @@
-import React, { useState } from "react";
-import { Dialog } from "radix-ui";
+import React, { useState, type Dispatch, type SetStateAction } from "react"; // prettier-ignore
 
 import Header from "../../Components/containers/Header";
 import { Card, CardHeader } from "../../Components/ui/card";
-import { CardFooter, CardContent } from "../../Components/ui/card";
+import { CardContent } from "../../Components/ui/card";
 import { Button } from "../../Components/ui/button";
 import { Input } from "../../Components/ui/input";
 import { Table, TableBody, TableCell } from "../../Components/ui/table";
@@ -11,23 +10,27 @@ import { TableHead, TableHeader, TableRow } from "../../Components/ui/table";
 import { CHECKOUTHELPERS } from "../../helpers/checkout.helpers";
 import { Minus, PencilRuler, Plus, Trash2, X } from "lucide-react";
 import { MarketplaceImages } from "../../constants/image";
+import PaymentModal from "../../Components/modal/PayModal";
+
+// props that controls the state
+interface Props {
+  showModal: boolean;
+  setShowModal: Dispatch<SetStateAction<boolean>>;
+}
 
 export default function Checkout() {
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <React.Fragment>
       <Header />
-      <CheckoutContents />
+      <CheckoutContents showModal={showModal} setShowModal={setShowModal} />
+      <PaymentModal showModal={showModal} setShowModal={setShowModal} />
     </React.Fragment>
   );
 }
 
-function CheckoutContents() {
-  const [showModal, setShowModal] = useState<boolean>(false);
-
-  function handleClose() {
-    setShowModal(!showModal);
-  }
-
+function CheckoutContents({ showModal, setShowModal }: Props) {
   return (
     <div className="">
       <div className="h-[30vh] bg-pink-50 mb-8 flex justify-center items-center">
@@ -50,10 +53,7 @@ function CheckoutContents() {
               <>
                 <CheckoutDetails />
                 <div className="update_button  flex items-center justify-between gap-3 mt-8 mx-5">
-                  <Button
-                    className="cursor-pointer rounded-none w-1/4 bg-pink-600"
-                    onClick={handleClose}
-                  >
+                  <Button className="cursor-pointer rounded-none w-1/4 bg-pink-600">
                     {" "}
                     <PencilRuler />
                     Update cart
@@ -67,28 +67,13 @@ function CheckoutContents() {
           </div>
           <div className="shopping_carts_checkout flex flex-col justify-center text-center gap-4 w-full">
             <h1>Cart total</h1>
-            <CartCheckoutInfo />
+            <CartCheckoutInfo
+              showModal={showModal}
+              setShowModal={setShowModal}
+            />
           </div>
         </div>
       </section>
-
-      {/* Payment modal */}
-      <Dialog.Root
-        modal={false}
-        defaultOpen={false}
-        open={showModal}
-        onOpenChange={handleClose}
-      >
-        <Dialog.Trigger asChild={false} />
-
-        <Dialog.Portal>
-          <Dialog.Overlay />
-          <Dialog.Content>
-            <Dialog.Title>Luxona Payment Method</Dialog.Title>
-            <Dialog.Description className=""></Dialog.Description>
-          </Dialog.Content>
-        </Dialog.Portal>
-      </Dialog.Root>
     </div>
   );
 }
@@ -160,7 +145,7 @@ function CheckoutDetails() {
   );
 }
 
-function CartCheckoutInfo() {
+function CartCheckoutInfo({ setShowModal }: Props) {
   return (
     <>
       <div className="cart-totals">
@@ -173,17 +158,20 @@ function CartCheckoutInfo() {
             <h1>Total</h1>
             <p>$325.00</p>
           </CardContent>
-          <CardFooter className="px-0">
-            <Button className="w-full bg-pink-600 rounded-none cursor-pointer">
+          {/* <CardFooter className="px-0">
+            <Button
+              onClick={() => setShowModal(true)}
+              className="w-full bg-pink-600 rounded-none cursor-pointer"
+            >
               Checkout
-            </Button>
-          </CardFooter>
+            </Button>{" "}
+          </CardFooter> */}
         </Card>
       </div>
       {/* delivery details */}
       <div className="delivery_details mt-8">
         <h1>Shipping Address</h1>
-        <form action="" className="bg-zinc-100 py-8 px-4 mt-6">
+        <form className="bg-zinc-100 py-8 px-4 mt-6">
           <div className="mb-4">
             <Input
               type="text"
@@ -213,7 +201,13 @@ function CartCheckoutInfo() {
           </div>
           <div className=""></div>
           <div className="">
-            <Button className="w-full bg-pink-600 rounded-none cursor-pointer">
+            <Button
+              onClick={(e: any) => {
+                setShowModal(true);
+                e.preventDefault();
+              }}
+              className="w-full bg-pink-600 rounded-none cursor-pointer"
+            >
               Submit
             </Button>
           </div>

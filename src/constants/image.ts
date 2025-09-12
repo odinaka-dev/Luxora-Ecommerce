@@ -26,6 +26,12 @@ import LogsImage from "../assets/Image/logs.png";
 import Marketplace from "../assets/Image/marketplace.jpg";
 import EmptCartIcon from "../assets/Image/cartIcon.svg";
 
+// payment icons
+import Paystack from "../assets/Image/Paystack.webp";
+import MasterCard from "../assets/Image/mastercard-svgrepo-com.png";
+import Stripe from "../assets/Image/stripe-svgrepo-com.png";
+import Verve from "../assets/Image/verve-svgrepo-com.png";
+
 interface MarketplaceImages {
   chairMain: typeof chairMain;
   chairOne: typeof chairOne;
@@ -54,6 +60,10 @@ interface MarketplaceImages {
   LogsImage: typeof LogsImage;
   Marketplace: typeof Marketplace;
   EmptCartIcon: typeof EmptCartIcon;
+  Paystack: typeof Paystack;
+  MasterCard: typeof MasterCard;
+  Stripe: typeof Stripe;
+  Verve: typeof Verve;
 }
 
 export const MarketplaceImages: MarketplaceImages = {
@@ -84,4 +94,8 @@ export const MarketplaceImages: MarketplaceImages = {
   LogsImage,
   Marketplace,
   EmptCartIcon,
+  Paystack,
+  MasterCard,
+  Stripe,
+  Verve,
 };
