@@ -5,3 +5,7 @@ export interface shopType {
   Quantity: string;
   price: string;
 }
+
+// cart types
+
+//

@@ -165,6 +165,11 @@ function CartCheckoutInfo() {
               className="rounded-none mb-5 shadow-none border-0 border-b-1"
             />
             <Input
+              type="email"
+              placeholder="Email address"
+              className="rounded-none mb-5 shadow-none border-0 border-b-1"
+            />
+            <Input
               type="number"
               placeholder="Code of purchase"
               className="rounded-none mb-5 shadow-none border-0 border-b-1"
@@ -176,7 +181,7 @@ function CartCheckoutInfo() {
             />
             <Input
               type="text"
-              placeholder="Postal code"
+              placeholder="Promo code"
               className="rounded-none shadow-none border-0 border-b-1"
             />
           </div>

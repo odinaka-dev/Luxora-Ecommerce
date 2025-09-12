@@ -1,9 +1,9 @@
-export interface signupType {
+export interface SignUpType {
   firstName: string;
   lastName: string;
   email: string;
   password: string;
-  profile: profileType;
+  profile: profileType | null;
 }
 
 interface profileType {
